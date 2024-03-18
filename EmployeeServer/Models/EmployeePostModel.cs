@@ -19,5 +19,6 @@ namespace EmployeeServer.Models
         public Gender Gender { get; set; }
 
         public bool Status { get; set; }
+        public List<Job> JobList { get; set; }
     }
 }

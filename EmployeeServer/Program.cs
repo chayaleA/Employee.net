@@ -1,3 +1,4 @@
+using EmployeeServer.Mapping;
 using EmployeeServer.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -64,6 +65,7 @@ builder.Services.AddSwaggerGen(options =>
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAutoMapper(typeof(ApiMappingProfile));
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
@@ -98,7 +100,7 @@ app.UseAuthorization();
 
 app.UseCors("MyPolicy");
 
-//app.UseTrack();
+app.UseTrack();
 
 app.MapControllers();
 

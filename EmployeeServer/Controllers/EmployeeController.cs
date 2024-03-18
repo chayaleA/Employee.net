@@ -37,15 +37,17 @@ namespace EmployeeServer.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] Employee employee)
+        public async Task<ActionResult> Post([FromBody] EmployeePostModel employee)
         {
-            return Ok(await _listEmployees.AddAsync(employee));
+            var employeeToAdd = _mapper.Map<Employee>(employee);
+            return Ok(await _listEmployees.AddAsync(employeeToAdd));
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] Employee employee)
+        public async Task<ActionResult> Put(int id, [FromBody] EmployeePostModel employee)
         {
-            return Ok(await _listEmployees.UpdateAsync(id, employee));
+            var employeeToUpdate = _mapper.Map<Employee>(employee);
+            return Ok(await _listEmployees.UpdateAsync(id, employeeToUpdate));
         }
 
         [HttpDelete("{id}")]

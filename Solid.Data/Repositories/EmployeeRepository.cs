@@ -37,6 +37,7 @@ namespace Solid.Data.Repositories
         public async Task<Employee> UpdateAsync(int id, Employee employee)
         {
             var existEmployee = await GetById(id);
+            employee.Id = id;
             _dataEmployee.Entry(existEmployee).CurrentValues.SetValues(employee);
             await _dataEmployee.SaveChangesAsync();
             return existEmployee;
