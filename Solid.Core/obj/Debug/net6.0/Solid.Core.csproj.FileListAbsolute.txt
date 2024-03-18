@@ -1,0 +1,12 @@
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\bin\Debug\net6.0\Solid.Core.deps.json
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\bin\Debug\net6.0\Solid.Core.dll
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\bin\Debug\net6.0\Solid.Core.pdb
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\obj\Debug\net6.0\Solid.Core.csproj.AssemblyReference.cache
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\obj\Debug\net6.0\Solid.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\obj\Debug\net6.0\Solid.Core.AssemblyInfoInputs.cache
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\obj\Debug\net6.0\Solid.Core.AssemblyInfo.cs
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\obj\Debug\net6.0\Solid.Core.csproj.CoreCompileInputs.cache
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\obj\Debug\net6.0\Solid.Core.dll
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\obj\Debug\net6.0\refint\Solid.Core.dll
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\obj\Debug\net6.0\Solid.Core.pdb
+C:\Users\user1\Desktop\צד שרת פרקטיקום\EmployeeServer\Solid.Core\obj\Debug\net6.0\ref\Solid.Core.dll
