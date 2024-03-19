@@ -41,7 +41,7 @@ namespace Solid.Service.Services
 
         public async Task RemoveAsync(int id)
         {
-            _employeeRepository.RemoveAsync(id);
+            await _employeeRepository.RemoveAsync(id);
         }
 
         public Employee GetByEmployeeNameAndPassword(string employeeFirstName, string employeeLastName, string employeePassword)

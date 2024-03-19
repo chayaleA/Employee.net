@@ -48,9 +48,9 @@ namespace EmployeeServer.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task DeleteAsync(int id)
+        public async Task Delete(int id)
         {
-            _listJobs.RemoveAsync(id);
+            await _listJobs.RemoveAsync(id);
         }
     }
 }

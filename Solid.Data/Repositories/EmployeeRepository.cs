@@ -45,10 +45,13 @@ namespace Solid.Data.Repositories
        
         public async Task RemoveAsync(int id)
         {
-            Employee temp = _dataEmployee.EmployeeList.Find(id);
+            Employee temp = await _dataEmployee.EmployeeList.FindAsync(id);
+            Console.WriteLine(temp.FirstName);
+            Console.WriteLine(temp.Status);
             if (temp == null)
                 return;
             temp.Status = false;
+            Console.WriteLine(temp.Status);
             await _dataEmployee.SaveChangesAsync();
         }
 
