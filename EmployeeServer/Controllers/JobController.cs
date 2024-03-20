@@ -5,6 +5,7 @@ using Solid.Core.DTOs;
 using Solid.Core.Services;
 using Solid.Core.Entities;
 using EmployeeServer.Models;
+using Solid.Data.Migrations;
 
 namespace EmployeeServer.Controllers
 {
@@ -36,15 +37,15 @@ namespace EmployeeServer.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] Job job)
+        public async Task<ActionResult> Post([FromBody] JobPostModel job)
         {
-            return Ok(await _listJobs.AddAsync(job));
+            return Ok(await _listJobs.AddAsync(_mapper.Map<Job>(job)));
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] Job job)
+        public async Task<ActionResult> Put(int id, [FromBody] JobPostModel job)
         {
-            return Ok(await _listJobs.UpdateAsync(id, job));
+            return Ok(await _listJobs.UpdateAsync(id, _mapper.Map<Job>(job)));
         }
 
         [HttpDelete("{id}")]
