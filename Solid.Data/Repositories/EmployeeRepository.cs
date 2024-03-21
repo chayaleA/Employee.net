@@ -34,15 +34,54 @@ namespace Solid.Data.Repositories
             return employee;
         }
 
+        //public async Task<Employee> UpdateAsync(int id, Employee employee)
+        //{
+        //    var existEmployee = await GetById(id);
+        //    employee.Id = id;
+
+        //    _dataEmployee.Entry(existEmployee).CurrentValues.SetValues(employee);
+        //    _dataEmployee.Entry(existEmployee).Collection(e => e.JobList).CurrentValue = employee.JobList;
+
+        //    await _dataEmployee.SaveChangesAsync();
+        //    return existEmployee;
+        //}
         public async Task<Employee> UpdateAsync(int id, Employee employee)
         {
             var existEmployee = await GetById(id);
             employee.Id = id;
-            _dataEmployee.Entry(existEmployee).CurrentValues.SetValues(employee);
+
+            // Update individual properties of existing employee
+            existEmployee.FirstName = employee.FirstName;
+            existEmployee.LastName = employee.LastName;
+            existEmployee.Password = employee.Password;
+            existEmployee.IdNumber = employee.IdNumber;
+            existEmployee.StartWork = employee.StartWork;
+            existEmployee.BirthDate = employee.BirthDate;
+            existEmployee.Gender = employee.Gender;
+
+            if (employee.JobList != null)
+            {
+                foreach (var job in employee.JobList)
+                {
+                    var existingJob = existEmployee.JobList.FirstOrDefault(j => j.Id == job.Id);
+                    if (existingJob != null)
+                    {
+                        // Update existing job
+                        existingJob.JobName = job.JobName;
+                        existingJob.IsManager = job.IsManager;
+                        existingJob.startJob = job.startJob;
+                    }
+                    else
+                        existEmployee.JobList.Add(job);
+                }
+            }
+
+
             await _dataEmployee.SaveChangesAsync();
             return existEmployee;
         }
-       
+
+
         public async Task RemoveAsync(int id)
         {
             Employee temp = await _dataEmployee.EmployeeList.FindAsync(id);

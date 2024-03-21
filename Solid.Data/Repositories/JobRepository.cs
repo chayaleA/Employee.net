@@ -46,7 +46,7 @@ namespace Solid.Data.Repositories
 
         public async Task RemoveAsync(int id)
         {
-            Job temp = await _dataJob.JobsList.FindAsync(id);
+            Job temp = await GetById(id);
             if (temp != null)
                 _dataJob.JobsList.Remove(temp);
             await _dataJob.SaveChangesAsync();

@@ -41,7 +41,7 @@ namespace Solid.Service.Services
 
         public async Task RemoveAsync(int id)
         {
-            _jobRepository.RemoveAsync(id);
+            await _jobRepository.RemoveAsync(id);
         }
     }
 }
