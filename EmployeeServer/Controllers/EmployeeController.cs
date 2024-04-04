@@ -7,11 +7,14 @@ using Solid.Core.DTOs;
 using Solid.Core.Services;
 using Solid.Core.Entities;
 
+using System.Net;
+using System.Net.Mail;
+
 namespace EmployeeServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService _listEmployees;
@@ -55,5 +58,7 @@ namespace EmployeeServer.Controllers
         {
             await _listEmployees.RemoveAsync(id);
         }
+
+        
     }
 }

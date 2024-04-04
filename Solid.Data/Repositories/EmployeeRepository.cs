@@ -20,7 +20,7 @@ namespace Solid.Data.Repositories
 
         public async Task<List<Employee>> GetListAsync()
         {
-            return await _dataEmployee.EmployeeList.Include(e => e.JobList).ToListAsync();
+            return await _dataEmployee.EmployeeList.Include(e => e.JobList).Where(e => e.Status).ToListAsync();
         }
         public async Task<Employee> GetById(int id)
         {

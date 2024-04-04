@@ -1,4 +1,5 @@
 ﻿using EmployeeServer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Solid.Core.Services;
@@ -25,13 +26,14 @@ namespace EmployeeServer.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] LoginModel loginModel)
         {
-            var employee = _employeeService.GetByEmployeeNameAndPassword(loginModel.FirstName, loginModel.LastName, loginModel.Password);
-            if (employee is not null)
+            //var employee = _employeeService.GetByEmployeeNameAndPassword(loginModel.FirstName, loginModel.LastName, loginModel.Password);
+            //if (employee is not null)
+            if (loginModel.UserName == "Admin" && loginModel.Password == "123456")
             {
                 var claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.Name, employee.LastName),
-                new Claim(ClaimTypes.Role, "employee")
+                new Claim(ClaimTypes.Name, "Admin"),
+                new Claim(ClaimTypes.Role, "teacher")
             };
 
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetValue<string>("JWT:Key")));
@@ -40,13 +42,20 @@ namespace EmployeeServer.Controllers
                     issuer: _configuration.GetValue<string>("JWT:Issuer"),
                     audience: _configuration.GetValue<string>("JWT:Audience"),
                     claims: claims,
-                    expires: DateTime.Now.AddMinutes(6),
+                    expires: DateTime.Now.AddHours(6),
                     signingCredentials: signinCredentials
                 );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
                 return Ok(new { Token = tokenString });
             }
             return Unauthorized();
+        }
+
+        [Authorize]
+        [HttpGet]
+        public Boolean Get()
+        {
+            return true;
         }
     }
 
