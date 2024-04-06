@@ -85,6 +85,13 @@ builder.Services.AddCors(opt => opt.AddPolicy("MyPolicy", policy =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+//}
+
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -103,5 +110,5 @@ app.UseCors("MyPolicy");
 app.UseTrack();
 
 app.MapControllers();
-
+app.MapGet("/", () => "EmployeeServer API is running!");
 app.Run();
